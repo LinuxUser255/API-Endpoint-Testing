@@ -1,0 +1,149 @@
+From main.go
+
+	// Check the request method of each endpoint in routes.txt and Make the appropriate request to each endpoint in the routes.txt file
+	// based on the request method
+	// use the http.Get(), http.Post(), http.Put(), http.Delete() functions from the net/http package
+	// You can also use goroutines to make the requests concurrently
+	// And include the JWT bearer token in the Authorization header for authenticated requests
+	// Use the http.Client.Do() function to send the request
+	// You can use theioutil.ReadAll() function to read the response body and Make goroutines to make the requests concurrently
+	for line := 1 line < len(routes) line++ {
+    		if line == 0 {
+    			continue // Skip the first line, which contains the base URL
+    		}// Check the request method of each endpoint in routes.txt and Make the appropriate request to each endpoint in the routes.txt file
+
+// package main
+
+// Take the target URL as a command-line argument and make an HTTP GET request to each route in the routes.txt file.
+
+// Open the routes.txt file and read the routes line by line
+//func readPaths() {
+//	file, err := os.Open("crapi-routes.txt")
+//	if err != nil {
+//		log.Fatalf("Error opening routes.txt: %v\n", err)
+//	}
+//	defer file.Close()
+//
+//	scanner := bufio.NewScanner(file)
+//	for scanner.Scan() {
+//		route := scanner.Text()
+//		fmt.Printf("Route: %s\n", route)
+//	}
+//
+//	if err := scanner.Err(); err != nil {
+//		log.Fatalf("Error reading routes.txt: %v\n", err)
+//	}
+//}
+//
+//func urlRequest() {
+//	fmt.Println("Enter the target URL: ")
+//	// Request user input for the URL
+//	var targetURL string
+//	fmt.Scanln(&targetURL)
+//
+//	// Make an HTTP request to the specified URL
+//	resp, err := http.Get(targetURL)
+//	if err != nil {
+//		fmt.Printf("Error making HTTP request: %v\n", err)
+//		return
+//	}
+//	defer resp.Body.Close() // Close the response body when we're done with it
+//
+//	// Print the response status code
+//	fmt.Printf("Response status code: %d\n", resp.StatusCode)
+//}
+//
+//// the main function calls all the other functions in the program
+//func main() {
+//	readPaths()
+//	urlRequest()
+//}
+//
+
+//package main
+//
+//import (
+//	"bufio"
+//	"fmt"
+//	"net/http"
+//	"os"
+//	"strings"
+//)
+//
+///*
+//Ask the user for a URl, take that URL as a command-line argument.
+//Make request to each URL using the method prefixed on each URL and appened each route from crapi-routes.txt to each request, line-by-line
+//until a request to each route from crapi-routes.txt have been made.
+//*/
+//
+//// function to read the command-line arguments
+//func getTargetUrl() {
+//	fmt.Print("Enter the target URL: ")
+//	var targetURL string
+//	fmt.Scanln(&targetURL) // <-- the '&' is Passing a refernce to targetURL, so then what's pointing to it?
+//	// Need to point to a function that takes the URL as an argument
+//	// Need to access the value stored in that memory address
+//}
+//
+////func readRoutes() {
+//	// Open the crapi-routes.txt file and read the routes line by line, and store them in a slice
+//	file, err := os.Open("crapi-routes.txt")
+//	if err != nil {
+//		fmt.Println("Error opening file:", err)
+//		return
+//	}
+//	defer file.Close()
+//
+//	scanner := bufio.NewScanner(file)
+//	// The routes are stored in this slice... is a datatype
+//	var routes []string
+//	for scanner.Scan() {
+//		// Sort the slice according to the request method in the crapi-routes.txt file??
+//		routes = append(routes, scanner.Text())
+//	}
+//	if err := scanner.Err(); err != nil {
+//		fmt.Println("Error reading file:", err)
+//	}
+//}
+//
+//func makeRequest(url, route string) {
+//	// Make a request to the specified URL and route
+//	fmt.Printf("Making request to %s%s\n", url, route)
+//	resp, err := http.Get(url + route)
+//	if err != nil {
+//		fmt.Println("Error making request:", err)
+//		return
+//	}
+//	defer resp.Body.Close()
+//	fmt.Printf("Status: %s\n", resp.Status)
+//	fmt.Printf("Body: %s\n", body)
+//	// Check the request method in the crapi-routes.txt file and make the appropriate request
+//	// need to range over the routes.. appending each route to the supplied URL
+//	for line := range routes {
+//		if line == 0 {
+//			continue // Skip the first line, which contains the base URL
+//		}
+//		if route == routes[line] {
+//			switch method := strings.ToUpper(routes[line-1]); method {
+//			case "GET":
+//				// Make a GET request
+//			case "POST":
+//				// Make a POST request
+//			case "PUT":
+//				// Make a PUT request
+//			case "DELETE":
+//				// Make a DELETE request
+//			default:
+//				fmt.Printf("Unsupported method: %s\n", method)
+//			}
+//			break
+//		}
+//	}
+//}
+//
+//func main() {
+//	getTargetUrl()
+//	readRoutes()
+//	makeRequest() // Replace
+//}
+//
